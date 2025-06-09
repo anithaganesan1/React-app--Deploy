@@ -17,14 +17,17 @@ pipeline {
                 checkout scm
             }
         }
-
         stage('Install Dependencies') {
             steps {
-                dir('devops-build') {
-                    echo '📦 Installing NPM packages...'
-                    sh 'npm install'
-                    sh 'chmod -R +x node_modules/.bin'
-                }
+                echo '📦 Installing NPM packages...'
+                // Run npm install in root repo folder
+                sh 'npm install'
+                sh 'chmod -R +x node_modules/.bin'
+               // dir('devops-build') {
+                  //  echo '📦 Installing NPM packages...'
+                   // sh 'npm install'
+                   // sh 'chmod -R +x node_modules/.bin'
+                //}
             }
         }
 
