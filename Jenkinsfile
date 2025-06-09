@@ -23,6 +23,7 @@ pipeline {
                 dir('devops-build') {
                     echo '📦 Installing NPM packages...'
                     sh 'npm install'
+                    sh 'chmod -R +x node_modules/.bin'
                 }
             }
         }
