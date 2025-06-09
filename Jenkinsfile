@@ -7,7 +7,7 @@ pipeline {
 
     environment {
         IMAGE_NAME = "aniganesan/dev"
-        DOCKER_HUB_CREDENTIALS = 'docker-hub-cred-id'
+        DOCKER_HUB_CREDENTIALS = 'dockerhub-id'
     }
 
     stages {
