@@ -23,7 +23,8 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 dir('devops-build') {
-                    echo " Installing NPM packages..."
+                    echo "📦 Cleaning and installing NPM packages..."
+                    sh 'rm -rf node_modules package-lock.json'
                     sh 'npm install'
                 }
             }
@@ -32,7 +33,8 @@ pipeline {
         stage('Build React App') {
             steps {
                 dir('devops-build') {
-                    echo " Building React app..."
+                     echo "🔨 Fixing permissions and building React app..."
+                    sh 'chmod -R+x ./node_modules/.bin/react-scripts'  // 👈 Add this line
                     sh 'npm run build'
                 }
             }
