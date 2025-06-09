@@ -32,7 +32,7 @@ pipeline {
         stage('Build React App') {
             steps {
                 dir('devops-build') {
-                    echo "🔨 Building React app..."
+                    echo " Building React app..."
                     sh 'npm run build'
                 }
             }
