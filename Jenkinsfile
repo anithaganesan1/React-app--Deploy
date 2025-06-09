@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     tools {
-        nodejs 'NodeJS_18' // Ensure this version exists in Jenkins tools
+        nodejs 'NodeJS_22' // Ensure this version exists in Jenkins tools
     }
 
     environment {
