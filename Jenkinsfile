@@ -23,14 +23,23 @@ pipeline {
             steps {
                 dir('devops-build') {
                     echo "📦 Installing NPM packages..."
-                    script {
-                        if (fileExists('package-lock.json')) {
-                            sh 'npm ci'
-                        } else {
-                            sh 'npm install'
-                        }
-                    }
-                    sh 'ls -la node_modules/.bin'
+                   // script {
+                       // if (fileExists('package-lock.json')) {
+                           // sh 'npm ci'
+                       // } else {
+                           // sh 'npm install'
+                      //  }
+                    //}
+                   echo "📦 Current directory:"
+                   sh 'pwd'
+                   echo "📋 Listing files:"
+                   sh 'ls -la'
+                   echo "📦 Installing NPM packages..."
+                   sh 'npm install'
+                   echo "📋 Listing node_modules directory:"
+                   sh 'ls -la node_modules || echo "node_modules folder not found"'
+                   sh 'ls -la node_modules/.bin || echo ".bin folder not found inside node_modules"'
+
                 }
             }
         }
