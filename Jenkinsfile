@@ -2,20 +2,19 @@ pipeline {
     agent any
 
     environment {
-        // Image base name (override TAG based on branch below)
         DEV_IMAGE_NAME = "aniganesan/dev"
         PROD_IMAGE_NAME = "aniganesan/prod"
-        DOCKER_CREDENTIALS_ID = "dockerhub-id"  // Replace with your Jenkins creds ID
+        DOCKER_CREDENTIALS_ID = "dockerhub-id"
     }
 
     tools {
-        nodejs "NodeJS_22"  // Make sure this is configured in Jenkins > Global Tool Configuration
+        nodejs "NodeJS_22"
     }
 
     stages {
         stage('Checkout Code') {
             steps {
-                echo " Checking out source code..."
+                echo "📥 Checking out source code..."
                 checkout scm
             }
         }
@@ -33,10 +32,9 @@ pipeline {
         stage('Build React App') {
             steps {
                 dir('devops-build') {
-                     echo "🔨 Fixing permissions and building React app..."
-                     ls -l ./node_modules/.bin/
-                     //sh 'chmod +x ./node_modules/.bin/react-scripts'
-                     sh 'npm run build'
+                    echo "🔨 Fixing permissions and building React app..."
+                    sh 'ls -l ./node_modules/.bin/'
+                    sh 'npm run build'
                 }
             }
         }
@@ -71,8 +69,7 @@ pipeline {
         stage('Deploy (Optional)') {
             when {
                 expression {
-                    // Only deploy if needed (for local testing)
-                    return false // Change to true to auto-deploy
+                    return false
                 }
             }
             steps {
