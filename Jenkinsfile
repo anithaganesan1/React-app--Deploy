@@ -22,8 +22,12 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 dir('devops-build') {
-                    echo "📦 Cleaning and installing NPM packages..."
-                    sh 'npm install'
+                    echo "📦 Installing NPM packages..."
+                    sh 'npm ci'
+                    sh 'ls -la'
+                    sh 'ls -la node_modules'
+                    sh 'ls -la node_modules/.bin'
+                   // sh 'npm install'
                 }
             }
         }
