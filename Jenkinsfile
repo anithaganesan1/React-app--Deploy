@@ -34,7 +34,8 @@ pipeline {
             steps {
                 dir('devops-build') {
                      echo "🔨 Fixing permissions and building React app..."
-                     sh 'chmod +x ./node_modules/.bin/react-scripts'
+                     ls -l ./node_modules/.bin/
+                     //sh 'chmod +x ./node_modules/.bin/react-scripts'
                      sh 'npm run build'
                 }
             }
