@@ -23,7 +23,7 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 dir('devops-build') {
-                    echo "📦 Installing NPM packages..."
+                    echo " Installing NPM packages..."
                     sh 'npm install'
                 }
             }
